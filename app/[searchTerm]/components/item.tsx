@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import {linkGc} from "next/dist/client/app-link-gc";
 
 type Props = {
 

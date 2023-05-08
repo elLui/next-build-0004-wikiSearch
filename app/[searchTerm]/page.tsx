@@ -1,4 +1,5 @@
 import getWikiResults from "@/lib/getWikiResults";
+import Item from "@/app/[searchTerm]/components/item";
 
 type Props = {
     // params are always strings
@@ -8,6 +9,9 @@ type Props = {
 };
 
 export async function generateMetadata({params: {searchTerm}}: Props){
+
+
+    // throw new Error("Not implemented");
     const wikiData: Promise<SearchResult> = getWikiResults(searchTerm);
 
     const data = await wikiData;
@@ -44,7 +48,7 @@ export default async function SearchResults({params: {searchTerm}}: Props) {
 
             {results
             ? Object.values(results).map(result => {
-                return <p>{JSON.stringify(result)}</p>
+                return <Item key={result.pageid} result={result}/>
                 })
                 :
                 <>
